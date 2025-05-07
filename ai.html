@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Copy Code</title>
+</head>
+<body>
+  <h2>Copying your code...</h2>
+  <pre id="code" style="display:none;"></pre>
+
+  <script>
+    fetch('ai.txt')
+      .then(response => response.text())
+      .then(text => {
+        document.getElementById('code').textContent = text;
+        navigator.clipboard.writeText(text).then(() => {
+          alert("✅ Code copied to clipboard!");
+        }).catch(() => {
+          alert("❌ Copying failed. Please copy manually.");
+        });
+      });
+  </script>
+</body>
+</html>
