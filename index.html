@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Copy Code</title>
+</head>
+<body>
+  <h2>Click to copy your code...</h2>
+  <button id="copyButton">Copy Code</button>
+
+  <script>
+    document.getElementById('copyButton').addEventListener('click', function() {
+      fetch('ai.txt')
+        .then(response => response.text())
+        .then(text => {
+          navigator.clipboard.writeText(text).then(() => {
+            alert("✅ Code copied to clipboard!");
+          }).catch(() => {
+            alert("❌ Copying failed. Please copy manually.");
+          });
+        })
+        .catch(() => {
+          alert("❌ Failed to load ai.txt file.");
+        });
+    });
+  </script>
+</body>
+</html>
+
